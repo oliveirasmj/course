@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.course.entities.User;
 import com.example.course.repositories.UserRepository;
+import com.example.course.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -21,7 +22,8 @@ public class UserService {
 	
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id); // findById ja existe porque UserRepository extende o JpaRepository
-		return obj.get();
+		//return obj.get(); //forma 1
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id)); //forma 2 - lanca a excepcao caso o id nao exista
 	}
 	
 	public User insert(User obj) {
