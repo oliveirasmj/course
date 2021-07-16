@@ -31,4 +31,17 @@ public class UserService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public User update(Long id, User obj) {
+		User entity = repository.getOne(id); //getOne - nao vai à BD buscar apenas o prepara
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(User entity, User obj) {
+		entity.setMorada(obj.getMorada());
+		entity.setNif(obj.getNif());
+		entity.setNome(obj.getNome());
+		entity.setTelefone(obj.getTelefone());
+	}
 }
