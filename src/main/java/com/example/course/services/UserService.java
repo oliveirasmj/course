@@ -16,11 +16,15 @@ public class UserService {
 	private UserRepository repository;
 	
 	public List<User> findAll() {
-		return repository.findAll();
+		return repository.findAll(); // findAll ja existe porque UserRepository extende o JpaRepository
 	}
 	
 	public User findById(Long id) {
-		Optional<User> obj = repository.findById(id);
+		Optional<User> obj = repository.findById(id); // findById ja existe porque UserRepository extende o JpaRepository
 		return obj.get();
+	}
+	
+	public User insert(User obj) {
+		return repository.save(obj);
 	}
 }
