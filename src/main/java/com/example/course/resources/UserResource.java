@@ -38,6 +38,18 @@ public class UserResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+//	@GetMapping(value = "/nomes/{nome}")
+//	public ResponseEntity<User> findByName(@PathVariable String nome) {
+//		User obj = service.findByNome(nome);
+//		return ResponseEntity.ok().body(obj);
+//	}
+	
+	@GetMapping(value = "/nif/{nif}")
+	public ResponseEntity<User> findByName(@PathVariable int nif) {
+		User obj = service.findByNif(nif);
+		return ResponseEntity.ok().body(obj);
+	}
+	
 	@PostMapping
 	public ResponseEntity<User> insert(@RequestBody User obj) {
 		obj = service.insert(obj);

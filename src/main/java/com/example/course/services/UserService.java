@@ -31,6 +31,16 @@ public class UserService {
 		return obj.orElseThrow(() -> new ResourceNotFoundException(id)); //forma 2 - lanca a excepcao caso o id nao exista
 	}
 	
+//	public User findByNome(String nome) {
+//		Optional<User> obj = Optional.ofNullable(repository.findByNome(nome)); // findById ja existe porque UserRepository extende o JpaRepository
+//		return obj.orElseThrow(() -> new ResourceNotFoundException(nome)); //forma 2 - lanca a excepcao caso o id nao exista
+//	}
+	
+	public User findByNif(int nif) {
+		Optional<User> obj = Optional.ofNullable(repository.findByNif(nif)); // findById ja existe porque UserRepository extende o JpaRepository
+		return obj.orElseThrow(() -> new ResourceNotFoundException(nif)); //forma 2 - lanca a excepcao caso o id nao exista
+	}
+	
 	public User insert(User obj) {
 		return repository.save(obj);
 	}
