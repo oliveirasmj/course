@@ -38,16 +38,16 @@ public class UserResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-//	@GetMapping(value = "/nomes/{nome}")
-//	public ResponseEntity<User> findByName(@PathVariable String nome) {
-//		User obj = service.findByNome(nome);
-//		return ResponseEntity.ok().body(obj);
-//	}
-	
 	@GetMapping(value = "/nif/{nif}")
 	public ResponseEntity<User> findByName(@PathVariable int nif) {
 		User obj = service.findByNif(nif);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@GetMapping(value = "/nomes/{nome}")
+	public ResponseEntity<List<User>> findByNome(@PathVariable String nome) {
+		List<User> list = service.findByNome(nome);
+		return ResponseEntity.ok().body(list);
 	}
 	
 	@PostMapping
