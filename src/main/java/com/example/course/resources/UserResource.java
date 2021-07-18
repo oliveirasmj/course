@@ -39,7 +39,7 @@ public class UserResource {
 	}
 	
 	@GetMapping(value = "/nif/{nif}")
-	public ResponseEntity<User> findByName(@PathVariable int nif) {
+	public ResponseEntity<User> findByNif(@PathVariable int nif) {
 		User obj = service.findByNif(nif);
 		return ResponseEntity.ok().body(obj);
 	}
